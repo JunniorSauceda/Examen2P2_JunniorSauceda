@@ -14,8 +14,8 @@ import java.util.ArrayList;
 public class Cliente extends Usuario implements Serializable{
     
     private ArrayList<Cancion> Favoritas=new ArrayList<>();
-    private ArrayList<Cancion> Megusta=new ArrayList<>();
-    private ArrayList<ArrayList> listas=new ArrayList<>();
+    private ArrayList<Lista> Megusta=new ArrayList<>();
+    private ArrayList<Lista> listas=new ArrayList<>();
 
     public Cliente() {
         super();
@@ -33,32 +33,27 @@ public class Cliente extends Usuario implements Serializable{
         this.Favoritas = Favoritas;
     }
 
-    public ArrayList<Cancion> getMegusta() {
+    public ArrayList<Lista> getMegusta() {
         return Megusta;
     }
 
-    public void setMegusta(ArrayList<Cancion> Megusta) {
+    public void setMegusta(ArrayList<Lista> Megusta) {
         this.Megusta = Megusta;
     }
 
-    public ArrayList<ArrayList> getListas() {
+    public ArrayList<Lista> getListas() {
         return listas;
     }
 
-    public void setListas(ArrayList<ArrayList> listas) {
+    public void setListas(ArrayList<Lista> listas) {
         this.listas = listas;
     }
     
-    public void setMEgusta(Cancion c){
-        Megusta.add(c);
-    }
     
     public void setFavoritas(Cancion c){
         Favoritas.add(c);
     }
-    public void setCancion(ArrayList c){
-        listas.add(c);
-    }
+    
     
     @Override
     public String toString() {

@@ -17,9 +17,12 @@ public class Artista extends Usuario implements Serializable{
         super();
     }
 
-    public Artista(String NomAutista) {
+    public Artista(String NomAutista, String UserName, String Password, int Edad) {
+        super(UserName, Password, Edad);
         this.NomAutista = NomAutista;
     }
+
+   
 
     public String getNomAutista() {
         return NomAutista;

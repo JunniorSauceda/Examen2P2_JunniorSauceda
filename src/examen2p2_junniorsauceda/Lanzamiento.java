@@ -5,7 +5,6 @@
 package examen2p2_junniorsauceda;
 
 import java.io.Serializable;
-import java.util.Date;
 
 /**
  *
@@ -13,11 +12,19 @@ import java.util.Date;
  */
 public class Lanzamiento implements Serializable{
     private String TituloPubli;
-    private Date Lanzaamiento;
+    private String Lanzaamiento;
     private int Likes;
 
     public Lanzamiento() {
     }
+
+    public Lanzamiento(String TituloPubli, String Lanzaamiento, int Likes) {
+        this.TituloPubli = TituloPubli;
+        this.Lanzaamiento = Lanzaamiento;
+        this.Likes = Likes;
+    }
+    
+    
 
     public String getTituloPubli() {
         return TituloPubli;
@@ -27,11 +34,11 @@ public class Lanzamiento implements Serializable{
         this.TituloPubli = TituloPubli;
     }
 
-    public Date getLanzaamiento() {
+    public String getLanzaamiento() {
         return Lanzaamiento;
     }
 
-    public void setLanzaamiento(Date Lanzaamiento) {
+    public void setLanzaamiento(String Lanzaamiento) {
         this.Lanzaamiento = Lanzaamiento;
     }
 

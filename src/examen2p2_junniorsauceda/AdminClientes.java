@@ -16,53 +16,52 @@ import java.util.ArrayList;
  *
  * @author Junnior Sauceda
  */
-public class AdminListaArtist {
-    private ArrayList<Artista>artistas=new ArrayList<>();
-    private File archivo;
+public class AdminClientes {
+    private ArrayList<Cliente> clientes=new ArrayList<>();
+    private File Archivo;
 
-    public AdminListaArtist() {
+    public AdminClientes() {
     }
 
-    public AdminListaArtist(String path) {
-        this.archivo = new File(path);
+    public AdminClientes(String path) {
+        this.Archivo = new File(path);
     }
 
-    public ArrayList<Artista> getArtistas() {
-        return artistas;
+    public ArrayList<Cliente> getClientes() {
+        return clientes;
     }
 
-    public void setArtistas(ArrayList<Artista> artistas) {
-        this.artistas = artistas;
+    public void setClientes(ArrayList<Cliente> clientes) {
+        this.clientes = clientes;
     }
 
     public File getArchivo() {
-        return archivo;
+        return Archivo;
     }
 
-    public void setArchivo(File archivo) {
-        this.archivo = archivo;
+    public void setArchivo(File Archivo) {
+        this.Archivo = Archivo;
     }
-    public void setArtista(Artista Autista){
-        artistas.add(Autista);
+    public void setCliente(Cliente C){
+        clientes.add(C);
     }
 
     @Override
     public String toString() {
-        return "Artistas=" + artistas + '}';
+        return "clientes=" + clientes + '}';
     }
     public void cargarArchivo() {
         try {            
-            artistas = new ArrayList();
-            Artista temp;
-            if (archivo.exists()) {
+            clientes = new ArrayList();
+            Cliente temp;
+            if (Archivo.exists()) {
                 FileInputStream entrada
-                    = new FileInputStream(archivo);
+                    = new FileInputStream(Archivo);
                 ObjectInputStream objeto
                     = new ObjectInputStream(entrada);
                 try {
-                    while ((temp = (Artista) objeto.readObject()) != null) {
-                        artistas
-                                .add(temp);
+                    while ((temp = (Cliente) objeto.readObject()) != null) {
+                        clientes.add(temp);
                     }
                 } catch (EOFException e) {
                     //encontro el final del Archivo
@@ -79,9 +78,9 @@ public class AdminListaArtist {
         FileOutputStream fw = null;
         ObjectOutputStream bw = null;
         try {
-            fw = new FileOutputStream(archivo);
+            fw = new FileOutputStream(Archivo);
             bw = new ObjectOutputStream(fw);
-            for (Artista t : artistas) {
+            for (Cliente t : clientes) {
                 bw.writeObject(t);
             }
             bw.flush();
@@ -94,5 +93,6 @@ public class AdminListaArtist {
             }
         }
     }
+    
     
 }

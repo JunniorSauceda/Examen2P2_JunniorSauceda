@@ -15,9 +15,12 @@ public class Album extends Lanzamiento implements Serializable{
     private ArrayList<Cancion> canciones=new ArrayList<>();
     private int cant;
 
-    public Album(int cant) {
+    public Album(int cant, String TituloPubli, String Lanzaamiento, int Likes) {
+        super(TituloPubli, Lanzaamiento, Likes);
         this.cant = cant;
     }
+
+    
 
     public ArrayList<Cancion> getCanciones() {
         return canciones;

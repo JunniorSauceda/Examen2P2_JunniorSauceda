@@ -12,12 +12,12 @@ import java.io.Serializable;
  */
 public class Cancion implements Serializable{
     private  String Titulo, Papa;
-    private int Duracion;
+    private double Duracion;
 
     public Cancion() {
     }
 
-    public Cancion(String Titulo, String Papa, int Duracion) {
+    public Cancion(String Titulo, String Papa, double Duracion) {
         this.Titulo = Titulo;
         this.Papa = Papa;
         this.Duracion = Duracion;
@@ -39,11 +39,11 @@ public class Cancion implements Serializable{
         this.Papa = Papa;
     }
 
-    public int getDuracion() {
+    public double getDuracion() {
         return Duracion;
     }
 
-    public void setDuracion(int Duracion) {
+    public void setDuracion(double Duracion) {
         this.Duracion = Duracion;
     }
 
