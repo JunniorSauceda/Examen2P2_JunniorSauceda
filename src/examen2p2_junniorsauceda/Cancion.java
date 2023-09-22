@@ -47,7 +47,7 @@ public class Cancion {
 
     @Override
     public String toString() {
-        return  Titulo + ", Papa=" + " Duracion=" + Duracion ;
+        return Papa+" - "+ Titulo + " - " + Duracion ;
     }
     
     
