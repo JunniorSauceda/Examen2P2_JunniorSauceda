@@ -10,12 +10,12 @@ import java.util.Date;
  *
  * @author Junnior Sauceda
  */
-public class Lanzamientos {
+public class Lanzamiento {
     private String TituloPubli;
     private Date Lanzaamiento;
     private int Likes;
 
-    public Lanzamientos() {
+    public Lanzamiento() {
     }
 
     public String getTituloPubli() {
@@ -40,6 +40,11 @@ public class Lanzamientos {
 
     public void setLikes(int Likes) {
         this.Likes = Likes;
+    }
+
+    @Override
+    public String toString() {
+        return  TituloPubli + "- Likes=" + Likes + '}';
     }
     
 }
