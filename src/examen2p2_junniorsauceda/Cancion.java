@@ -4,11 +4,13 @@
  */
 package examen2p2_junniorsauceda;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Junnior Sauceda
  */
-public class Cancion {
+public class Cancion implements Serializable{
     private  String Titulo, Papa;
     private int Duracion;
 

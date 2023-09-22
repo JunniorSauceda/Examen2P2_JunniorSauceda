@@ -4,11 +4,13 @@
  */
 package examen2p2_junniorsauceda;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Junnior Sauceda
  */
-public class Artista extends Usuario{
+public class Artista extends Usuario implements Serializable{
      private String NomAutista;
 
     public Artista() {

@@ -4,10 +4,45 @@
  */
 package examen2p2_junniorsauceda;
 
+import java.io.Serializable;
+import java.util.ArrayList;
+
 /**
  *
  * @author Junnior Sauceda
  */
-public class Album {
+public class Album extends Lanzamiento implements Serializable{
+    private ArrayList<Cancion> canciones=new ArrayList<>();
+    private int cant;
+
+    public Album(int cant) {
+        this.cant = cant;
+    }
+
+    public ArrayList<Cancion> getCanciones() {
+        return canciones;
+    }
+
+    public void setCanciones(ArrayList<Cancion> canciones) {
+        this.canciones = canciones;
+    }
+
+    public int getCant() {
+        return cant;
+    }
+
+    public void setCant(int cant) {
+        this.cant = cant;
+    }
+
+    public void setCancion(Cancion c){
+        canciones.add(c);
+    }
+    
+    @Override
+    public String toString() {
+        return super.getTituloPubli()+" - "+cant ;
+    }
+    
     
 }

@@ -4,6 +4,9 @@
  */
 package examen2p2_junniorsauceda;
 
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Junnior Sauceda
@@ -15,6 +18,11 @@ public class Principal extends javax.swing.JFrame {
      */
     public Principal() {
         initComponents();
+        jlb_artista.setVisible(false);
+        jtf_NombreArtist.setVisible(false);
+        jlb_artista.setEnabled(false);
+        jtf_NombreArtist.setEnabled(false);
+
     }
 
     /**
@@ -26,7 +34,7 @@ public class Principal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jDialog1 = new javax.swing.JDialog();
+        JD_CrearAcount = new javax.swing.JDialog();
         jPanel2 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -38,7 +46,7 @@ public class Principal extends javax.swing.JFrame {
         jbt_CrearCuenta = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         jcb_TipUs = new javax.swing.JComboBox<>();
-        jLabel9 = new javax.swing.JLabel();
+        jlb_artista = new javax.swing.JLabel();
         jtf_NombreArtist = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -67,14 +75,24 @@ public class Principal extends javax.swing.JFrame {
         jsp_Edad.setModel(new javax.swing.SpinnerNumberModel(12, 12, null, 1));
 
         jbt_CrearCuenta.setText("Crear Cuenta");
+        jbt_CrearCuenta.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jbt_CrearCuentaMouseClicked(evt);
+            }
+        });
 
         jLabel8.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
         jLabel8.setText("Tipo De Usuario:");
 
         jcb_TipUs.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cliente", "Artista" }));
+        jcb_TipUs.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jcb_TipUsItemStateChanged(evt);
+            }
+        });
 
-        jLabel9.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
-        jLabel9.setText("Nombre Artistico:");
+        jlb_artista.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
+        jlb_artista.setText("Nombre Artistico:");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -98,18 +116,19 @@ public class Principal extends javax.swing.JFrame {
                 .addGap(120, 120, 120))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jbt_CrearCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
+                .addComponent(jLabel4)
                 .addGap(303, 303, 303))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(295, 295, 295)
-                        .addComponent(jLabel9))
+                        .addComponent(jlb_artista))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(272, 272, 272)
-                        .addComponent(jtf_NombreArtist, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jtf_NombreArtist, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(334, 334, 334)
+                        .addComponent(jbt_CrearCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -136,22 +155,22 @@ public class Principal extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jsp_Edad, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
-                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jlb_artista, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jtf_NombreArtist, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
-                .addGap(21, 21, 21)
+                .addComponent(jtf_NombreArtist, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(56, 56, 56)
                 .addComponent(jbt_CrearCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(48, 48, 48))
+                .addContainerGap(100, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
-        jDialog1.getContentPane().setLayout(jDialog1Layout);
-        jDialog1Layout.setHorizontalGroup(
-            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout JD_CrearAcountLayout = new javax.swing.GroupLayout(JD_CrearAcount.getContentPane());
+        JD_CrearAcount.getContentPane().setLayout(JD_CrearAcountLayout);
+        JD_CrearAcountLayout.setHorizontalGroup(
+            JD_CrearAcountLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
-        jDialog1Layout.setVerticalGroup(
-            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        JD_CrearAcountLayout.setVerticalGroup(
+            JD_CrearAcountLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
@@ -182,6 +201,11 @@ public class Principal extends javax.swing.JFrame {
         jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 360, 180, 80));
 
         jButton2.setText("Crear Cuenta");
+        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton2MouseClicked(evt);
+            }
+        });
         jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 360, 170, 80));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -197,6 +221,60 @@ public class Principal extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jcb_TipUsItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jcb_TipUsItemStateChanged
+        // TODO add your handling code here:
+        if (jcb_TipUs.getSelectedIndex() == 1) {
+
+            jlb_artista.setEnabled(true);
+            jtf_NombreArtist.setEnabled(true);
+            jlb_artista.setVisible(true);
+            jtf_NombreArtist.setVisible(true);
+        }
+        else{
+            jlb_artista.setVisible(false);
+        jtf_NombreArtist.setVisible(false);
+        jlb_artista.setEnabled(false);
+        jtf_NombreArtist.setEnabled(false);
+
+        }
+    }//GEN-LAST:event_jcb_TipUsItemStateChanged
+
+    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
+        // TODO add your handling code here:
+        JD_CrearAcount.pack();
+        JD_CrearAcount.setModal(true);
+        JD_CrearAcount.setLocationRelativeTo(this);
+        JD_CrearAcount.setVisible(true);
+    }//GEN-LAST:event_jButton2MouseClicked
+
+    private void jbt_CrearCuentaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbt_CrearCuentaMouseClicked
+        // TODO add your handling code here:
+        try {
+            if (jcb_TipUs.getSelectedIndex() == 0) {
+                if ((Integer.parseInt(jsp_Edad.getValue().toString())) < 12) {
+                    JOptionPane.showMessageDialog(JD_CrearAcount, "El Usuario debe tener ser mayor de 12 años");
+                } else {
+                    String Nombre=jtf_Nombre.getText();
+                    String Contraseña=jtf_Contra.getText();
+                    int edad=Integer.parseInt(jsp_Edad.getValue().toString());
+                    
+                    
+
+                }
+            } else {
+                if ((Integer.parseInt(jsp_Edad.getValue().toString())) < 18) {
+                    JOptionPane.showMessageDialog(JD_CrearAcount, "El artista debe ser mayor de 18 años");
+                } else {
+
+                }
+
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(JD_CrearAcount, "Error");
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_jbt_CrearCuentaMouseClicked
 
     /**
      * @param args the command line arguments
@@ -232,13 +310,15 @@ public class Principal extends javax.swing.JFrame {
             }
         });
     }
-
+    public static ArrayList<Usuario> Users=new ArrayList<>();
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JDialog JD_CrearAcount;
     private javax.swing.JTextField Jtf_Contraseña;
     private javax.swing.JTextField Jtf_Usuario;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JDialog jDialog1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -247,11 +327,11 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JButton jbt_CrearCuenta;
     private javax.swing.JComboBox<String> jcb_TipUs;
+    private javax.swing.JLabel jlb_artista;
     private javax.swing.JSpinner jsp_Edad;
     private javax.swing.JTextField jtf_Contra;
     private javax.swing.JTextField jtf_Nombre;

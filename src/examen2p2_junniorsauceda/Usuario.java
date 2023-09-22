@@ -4,11 +4,13 @@
  */
 package examen2p2_junniorsauceda;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Junnior Sauceda
  */
-public class Usuario {
+public class Usuario implements Serializable{
     private String UserName, Password;
     private int Edad;
 

@@ -4,13 +4,14 @@
  */
 package examen2p2_junniorsauceda;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  *
  * @author Junnior Sauceda
  */
-public class Lanzamiento {
+public class Lanzamiento implements Serializable{
     private String TituloPubli;
     private Date Lanzaamiento;
     private int Likes;
