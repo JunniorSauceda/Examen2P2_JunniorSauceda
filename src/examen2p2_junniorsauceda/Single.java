@@ -15,9 +15,12 @@ public class Single extends Lanzamiento implements Serializable{
 
     public Single() {
     }
-    public Single(Cancion c){
+
+    public Single(Cancion c,String TituloPubli, String Lanzaamiento, int Likes) {
+        super(TituloPubli, Lanzaamiento, Likes);
         contenido=c;
     }
+    
 
     public Cancion getContenido() {
         return contenido;

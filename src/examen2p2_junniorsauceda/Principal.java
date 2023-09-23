@@ -4,8 +4,10 @@
  */
 package examen2p2_junniorsauceda;
 
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
@@ -73,6 +75,15 @@ public class Principal extends javax.swing.JFrame {
         jsp_cantSongs = new javax.swing.JSpinner();
         jbt_CrearAlbum = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
+        jLabel17 = new javax.swing.JLabel();
+        jtf_TituloSingle = new javax.swing.JTextField();
+        jLabel18 = new javax.swing.JLabel();
+        jtf_FechaSingle = new javax.swing.JTextField();
+        Bt_AddSingle = new javax.swing.JButton();
+        jLabel19 = new javax.swing.JLabel();
+        jtf_TituloCancion = new javax.swing.JTextField();
+        jLabel20 = new javax.swing.JLabel();
+        jsp_DuraCancion = new javax.swing.JSpinner();
         jPanel9 = new javax.swing.JPanel();
         jPanel10 = new javax.swing.JPanel();
         jPanel11 = new javax.swing.JPanel();
@@ -311,15 +322,96 @@ public class Principal extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Crear Album", jPanel5);
 
+        jPanel6.setBackground(new java.awt.Color(0, 102, 153));
+
+        jLabel17.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
+        jLabel17.setText("Titulo:");
+
+        jtf_TituloSingle.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtf_TituloSingleActionPerformed(evt);
+            }
+        });
+
+        jLabel18.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
+        jLabel18.setText("Fecha de Lanzamiento:");
+
+        jtf_FechaSingle.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtf_FechaSingleActionPerformed(evt);
+            }
+        });
+
+        Bt_AddSingle.setText("Crear Single");
+        Bt_AddSingle.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Bt_AddSingleMouseClicked(evt);
+            }
+        });
+        Bt_AddSingle.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Bt_AddSingleActionPerformed(evt);
+            }
+        });
+
+        jLabel19.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
+        jLabel19.setText("Cancion:");
+
+        jLabel20.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
+        jLabel20.setText("Duracion(Segundos):");
+
+        jsp_DuraCancion.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
+
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 840, Short.MAX_VALUE)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel17)
+                    .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(jtf_TituloSingle, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel18, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jtf_FechaSingle, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 251, Short.MAX_VALUE)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel20)
+                    .addComponent(jLabel19)
+                    .addComponent(jtf_TituloCancion)
+                    .addComponent(jsp_DuraCancion, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(72, 72, 72))
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(303, 303, 303)
+                .addComponent(Bt_AddSingle, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 409, Short.MAX_VALUE)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jtf_TituloSingle, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addComponent(jLabel19)
+                        .addGap(18, 18, 18)
+                        .addComponent(jtf_TituloCancion, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(26, 26, 26)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jtf_FechaSingle, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addComponent(jLabel20)
+                        .addGap(18, 18, 18)
+                        .addComponent(jsp_DuraCancion, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(16, 16, 16)
+                .addComponent(Bt_AddSingle, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(103, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Crear Single", jPanel6);
@@ -369,11 +461,11 @@ public class Principal extends javax.swing.JFrame {
         JD_Artista.getContentPane().setLayout(JD_ArtistaLayout);
         JD_ArtistaLayout.setHorizontalGroup(
             JD_ArtistaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 850, Short.MAX_VALUE)
+            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, 888, Short.MAX_VALUE)
         );
         JD_ArtistaLayout.setVerticalGroup(
             JD_ArtistaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, 537, Short.MAX_VALUE)
         );
 
         jPanel7.setBackground(new java.awt.Color(0, 102, 0));
@@ -386,6 +478,8 @@ public class Principal extends javax.swing.JFrame {
 
         jLabel16.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
         jLabel16.setText("Duracion(Segundos):");
+
+        jsp_DuraSong.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
 
         jButton3.setText("Agregar Cancion");
         jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -528,8 +622,8 @@ public class Principal extends javax.swing.JFrame {
             boolean existe = false;
             String Nombre = jtf_Nombre.getText();
             for (Usuario User : Users) {
-                if(User.getUserName().equals(Nombre)){
-                    existe=true;
+                if (User.getUserName().equals(Nombre)) {
+                    existe = true;
                 }
             }
             if (existe) {
@@ -588,24 +682,33 @@ public class Principal extends javax.swing.JFrame {
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         // TODO add your handling code here:
         try {
-            String nom=Jtf_Usuario.getText();
-            String Contra=Jtf_Contraseña.getText();
-            boolean existe=false;
-            boolean artista=false;
+            String nom = Jtf_Usuario.getText();
+            String Contra = Jtf_Contraseña.getText();
+            boolean existe = false;
+            boolean artista = false;
             for (Usuario User : Users) {
-                if(User instanceof Artista){
-                    if((((Artista)User).getUserName().equals(nom))&&((((Artista)User).getPassword()).equals(Contra))){
-                        JOptionPane.showMessageDialog(this, "Hola");
-                        artista=true;
-                        existe=true;
+                if (User instanceof Artista) {
+                    if ((((Artista) User).getUserName().equals(nom)) && ((((Artista) User).getPassword()).equals(Contra))) {
+
+                        artista = true;
+                        existe = true;
+                    }
+                } else {
+                    if ((((Cliente) User).getUserName().equals(nom)) && ((((Cliente) User).getPassword()).equals(Contra))) {
+
+                        artista = false;
+                        existe = true;
                     }
                 }
-                else{
-                    if((((Cliente)User).getUserName().equals(nom))&&((((Cliente)User).getPassword()).equals(Contra))){
-                        JOptionPane.showMessageDialog(this, "Adios");
-                        artista=false;
-                        existe=true;
-                    }
+            }
+            if (existe) {
+                if (artista) {
+                    JD_Artista.pack();
+                    JD_Artista.setModal(true);
+                    JD_Artista.setLocationRelativeTo(this);
+                    JD_Artista.setVisible(true);
+                } else {
+                    JOptionPane.showMessageDialog(this, "No me dio tiempo");
                 }
             }
         } catch (Exception e) {
@@ -624,21 +727,147 @@ public class Principal extends javax.swing.JFrame {
 
     private void jbt_CrearAlbumMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbt_CrearAlbumMouseClicked
         // TODO add your handling code here:
-        String title=jtf_TituloPubli.getText();
-        String publi=jtf_FechaPubli.getText();
-        al=new Album(Integer.parseInt(jsp_cantSongs.getValue().toString()), title, publi, 0);
-        
-        JD_CrearAcount.pack();
-        JD_CrearAcount.setModal(true);
-        JD_CrearAcount.setLocationRelativeTo(this);
-        JD_CrearAcount.setVisible(true);
-        
+        String title = jtf_TituloPubli.getText();
+        String publi = jtf_FechaPubli.getText();
+        al = new Album(Integer.parseInt(jsp_cantSongs.getValue().toString()), title, publi, 0);
+        BufferedWriter bw = null;
+        FileWriter fw = null;
+        try {
+
+            File fichero = null;
+
+            fichero = new File("./Lanzamientos.txt");
+            String Lanza =  al.getTituloPubli() + ";" + al.getLanzaamiento() + "\n";
+
+            fw = new FileWriter(fichero, true);
+            bw = new BufferedWriter(fw);
+            bw.write(Lanza);
+            bw.flush();
+            JOptionPane.showMessageDialog(JD_Artista,
+                    "Album Creado");
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        try {
+            bw.close();
+            fw.close();
+        } catch (IOException ex) {
+        }
+        //fin IF
+
+        JD_CrearCanciones.pack();
+        JD_CrearCanciones.setModal(true);
+        JD_CrearCanciones.setLocationRelativeTo(this);
+        JD_CrearCanciones.setVisible(true);
+
     }//GEN-LAST:event_jbt_CrearAlbumMouseClicked
 
     private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
         // TODO add your handling code here:
-        String title=jtf_TituloSong.getText();
+
+        String title = jtf_TituloSong.getText();
+        double temp = (Integer.parseInt(jsp_DuraSong.getValue().toString()) / 60);
+        Cancion c = new Cancion(title, al.getTituloPubli(), temp);
+        al.setCancion(c);
+        cont++;
+        BufferedWriter bw = null;
+        FileWriter fw = null;
+        try {
+
+            File fichero = null;
+
+            fichero = new File("./Canciones.txt");
+            String Lanza =  c.getPapa() + ";" + c.getTitulo() + ";" + c.getDuracion() + "\n";
+
+            fw = new FileWriter(fichero, true);
+            bw = new BufferedWriter(fw);
+            bw.write(Lanza);
+            bw.flush();
+            JOptionPane.showMessageDialog(JD_CrearCanciones,
+                    "Cancion Agregada");
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        try {
+            bw.close();
+            fw.close();
+        } catch (IOException ex) {
+        }
+        if (cont == al.getCant()) {
+            JD_CrearCanciones.setVisible(false);
+            cont = 0;
+            jtf_TituloSong.setText("");
+            jsp_DuraSong.setValue(1);
+        }
     }//GEN-LAST:event_jButton3MouseClicked
+
+    private void jtf_TituloSingleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtf_TituloSingleActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtf_TituloSingleActionPerformed
+
+    private void jtf_FechaSingleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtf_FechaSingleActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtf_FechaSingleActionPerformed
+
+    private void Bt_AddSingleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Bt_AddSingleActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Bt_AddSingleActionPerformed
+
+    private void Bt_AddSingleMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Bt_AddSingleMouseClicked
+        // TODO add your handling code here:
+        Cancion C = new Cancion(jtf_TituloCancion.getText(), jtf_TituloSingle.getText(), Integer.parseInt(jsp_DuraCancion.getValue().toString()));
+        Single s = new Single(C, jtf_TituloCancion.getText(), jtf_FechaSingle.getText(), 0);
+        BufferedWriter bw = null;
+        FileWriter fw = null;
+        try {
+
+            File fichero = null;
+
+            fichero = new File("./Lanzamientos.txt");
+            String Lanza =  s.getTituloPubli() + ";" + s.getLanzaamiento() +"\n";
+
+            fw = new FileWriter(fichero, true);
+            bw = new BufferedWriter(fw);
+            bw.write(Lanza);
+            bw.flush();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        try {
+            bw.close();
+            fw.close();
+        } catch (IOException ex) {
+        }
+
+        fw = null;
+        bw = null;
+        try {
+
+            File fichero = null;
+
+            fichero = new File("./Canciones.txt");
+            String Lanza =  C.getPapa() + ";" + C.getTitulo() + ";" + C.getDuracion() + "\n";
+
+            fw = new FileWriter(fichero, true);
+            bw = new BufferedWriter(fw);
+            bw.write(Lanza);
+            bw.flush();
+            JOptionPane.showMessageDialog(JD_Artista,
+                    "Single creado");
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        try {
+            bw.close();
+            fw.close();
+        } catch (IOException ex) {
+        }
+
+    }//GEN-LAST:event_Bt_AddSingleMouseClicked
 
     public void rellenarArtistas() {
         Artists.clear();
@@ -699,6 +928,7 @@ public class Principal extends javax.swing.JFrame {
         });
     }
     Album al;
+    int cont = 0;
     public static ArrayList<Usuario> Users = new ArrayList<>();
     public static ArrayList<Cliente> Clients = new ArrayList<>();
     public static ArrayList<Artista> Artists = new ArrayList<>();
@@ -706,6 +936,7 @@ public class Principal extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Bt_AddSingle;
     private javax.swing.JDialog JD_Artista;
     private javax.swing.JDialog JD_Cliente;
     private javax.swing.JDialog JD_CrearAcount;
@@ -723,7 +954,11 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -746,14 +981,18 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton jbt_CrearCuenta;
     private javax.swing.JComboBox<String> jcb_TipUs;
     private javax.swing.JLabel jlb_artista;
+    private javax.swing.JSpinner jsp_DuraCancion;
     private javax.swing.JSpinner jsp_DuraSong;
     private javax.swing.JSpinner jsp_Edad;
     private javax.swing.JSpinner jsp_cantSongs;
     private javax.swing.JTextField jtf_Contra;
     private javax.swing.JTextField jtf_FechaPubli;
+    private javax.swing.JTextField jtf_FechaSingle;
     private javax.swing.JTextField jtf_Nombre;
     private javax.swing.JTextField jtf_NombreArtist;
+    private javax.swing.JTextField jtf_TituloCancion;
     private javax.swing.JTextField jtf_TituloPubli;
+    private javax.swing.JTextField jtf_TituloSingle;
     private javax.swing.JTextField jtf_TituloSong;
     // End of variables declaration//GEN-END:variables
 }
