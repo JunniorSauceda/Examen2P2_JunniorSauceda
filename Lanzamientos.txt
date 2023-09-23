@@ -1,3 +1,4 @@
 Album;Nuila te amamos;22/09/2023;0;Diego
 Single;Nuila ten compasion;22/09/2023;0;Diego
 Album;Nuila te amo;22/02/2023;0;Diego
+Album;Nuila ten piedad;22/09/2023;0;Diego

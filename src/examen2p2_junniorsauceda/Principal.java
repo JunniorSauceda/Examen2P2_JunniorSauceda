@@ -99,6 +99,9 @@ public class Principal extends javax.swing.JFrame {
         jPanel11 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jtr_treElim = new javax.swing.JTree();
+        jPanel8 = new javax.swing.JPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jtree_Listar = new javax.swing.JTree();
         JD_CrearCanciones = new javax.swing.JDialog();
         jPanel7 = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
@@ -515,6 +518,33 @@ public class Principal extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Eliminar Lanzamiento", jPanel11);
 
+        treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("Artista");
+        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Albumes");
+        treeNode1.add(treeNode2);
+        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Single");
+        treeNode1.add(treeNode2);
+        jtree_Listar.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
+        jScrollPane3.setViewportView(jtree_Listar);
+
+        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
+        jPanel8.setLayout(jPanel8Layout);
+        jPanel8Layout.setHorizontalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(582, Short.MAX_VALUE))
+        );
+        jPanel8Layout.setVerticalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 386, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(17, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("Listar(Este si funciona)", jPanel8);
+
         jPanel4.add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 840, 440));
 
         javax.swing.GroupLayout JD_ArtistaLayout = new javax.swing.GroupLayout(JD_Artista.getContentPane());
@@ -901,7 +931,7 @@ public class Principal extends javax.swing.JFrame {
         // TODO add your handling code here:
         Cancion C = new Cancion(jtf_TituloCancion.getText(), jtf_TituloSingle.getText(), Integer.parseInt(jsp_DuraCancion.getValue().toString()));
         Single s = new Single(C, jtf_TituloCancion.getText(), jtf_FechaSingle.getText(), 0);
-
+        Autista.getCanciones().add(C);
         BufferedWriter bw = null;
         FileWriter fw = null;
         try {
@@ -968,6 +998,22 @@ public class Principal extends javax.swing.JFrame {
                 modelo.addElement(Lanzamiento1);
             }
         }
+        if (jTabbedPane1.getSelectedIndex() == 5) {
+            DefaultMutableTreeNode Nodo=(DefaultMutableTreeNode)jtree_Listar.getModel().getRoot();
+            for (Album albume : Autista.getAlbumes()) {
+                
+                DefaultMutableTreeNode M=(DefaultMutableTreeNode)Nodo.getChildAt(0);
+                Nodo.add(M);
+                for (Cancion cancione : albume.getCanciones()) {
+                    M= new DefaultMutableTreeNode(cancione);
+                }
+            }
+            for (Cancion cancione : Autista.getCanciones()) {
+                DefaultMutableTreeNode M=(DefaultMutableTreeNode)Nodo.getChildAt(1);
+                M.add(new DefaultMutableTreeNode(cancione));
+            }
+        }
+        
     }//GEN-LAST:event_jTabbedPane1StateChanged
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
@@ -999,7 +1045,7 @@ public class Principal extends javax.swing.JFrame {
             H.resume();
         }
         else{
-        H.suspend();
+            H.suspend();
     }
 
     }//GEN-LAST:event_jButton6MouseClicked
@@ -1161,10 +1207,12 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JProgressBar jProgressBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JButton jbt_CrearAlbum;
     private javax.swing.JButton jbt_CrearCuenta;
@@ -1184,5 +1232,6 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JTextField jtf_TituloSingle;
     private javax.swing.JTextField jtf_TituloSong;
     private javax.swing.JTree jtr_treElim;
+    private javax.swing.JTree jtree_Listar;
     // End of variables declaration//GEN-END:variables
 }
