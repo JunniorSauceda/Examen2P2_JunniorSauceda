@@ -20,6 +20,10 @@ public class Album extends Lanzamiento implements Serializable{
         this.cant = cant;
     }
 
+    public Album(String TituloPubli, String Lanzaamiento, int Likes) {
+        super(TituloPubli, Lanzaamiento, Likes);
+    }
+
     
 
     public ArrayList<Cancion> getCanciones() {

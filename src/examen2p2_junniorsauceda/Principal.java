@@ -4,14 +4,18 @@
  */
 package examen2p2_junniorsauceda;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
+import javax.swing.tree.DefaultMutableTreeNode;
 
 /**
  *
@@ -27,6 +31,7 @@ public class Principal extends javax.swing.JFrame {
         rellenarArtistas();
         rellenarClientes();
         rellenarListas();
+        Nodo = (DefaultMutableTreeNode) jtr_treElim.getModel().getRoot();
         Users.addAll(Clients);
         Users.addAll(Artists);
         jlb_artista.setVisible(false);
@@ -61,6 +66,11 @@ public class Principal extends javax.swing.JFrame {
         jtf_NombreArtist = new javax.swing.JTextField();
         JD_Cliente = new javax.swing.JDialog();
         jPanel3 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        Jlst_canciones = new javax.swing.JList<>();
+        jProgressBar1 = new javax.swing.JProgressBar();
+        jButton5 = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
         JD_Artista = new javax.swing.JDialog();
         jPanel4 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
@@ -87,6 +97,8 @@ public class Principal extends javax.swing.JFrame {
         jPanel9 = new javax.swing.JPanel();
         jPanel10 = new javax.swing.JPanel();
         jPanel11 = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jtr_treElim = new javax.swing.JTree();
         JD_CrearCanciones = new javax.swing.JDialog();
         jPanel7 = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
@@ -224,6 +236,34 @@ public class Principal extends javax.swing.JFrame {
         jPanel3.setBackground(new java.awt.Color(0, 51, 0));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jScrollPane1.setViewportView(Jlst_canciones);
+
+        jPanel3.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 280, 450));
+
+        jProgressBar1.setMaximum(60);
+        jPanel3.add(jProgressBar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 410, 520, 20));
+
+        jButton5.setText("Reproducir");
+        jButton5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton5MouseClicked(evt);
+            }
+        });
+        jPanel3.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 310, 90, 40));
+
+        jButton6.setText("Pausar/Reanudar");
+        jButton6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton6MouseClicked(evt);
+            }
+        });
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
+        jPanel3.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 310, 120, 40));
+
         javax.swing.GroupLayout JD_ClienteLayout = new javax.swing.GroupLayout(JD_Cliente.getContentPane());
         JD_Cliente.getContentPane().setLayout(JD_ClienteLayout);
         JD_ClienteLayout.setHorizontalGroup(
@@ -245,6 +285,12 @@ public class Principal extends javax.swing.JFrame {
         jLabel10.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         jLabel10.setText("Bienvenido Artista!");
         jPanel4.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, -1, -1));
+
+        jTabbedPane1.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jTabbedPane1StateChanged(evt);
+            }
+        });
 
         jPanel5.setBackground(new java.awt.Color(102, 102, 102));
 
@@ -442,15 +488,29 @@ public class Principal extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Editar Single", jPanel10);
 
+        javax.swing.tree.DefaultMutableTreeNode treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("Musica");
+        javax.swing.tree.DefaultMutableTreeNode treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Albumes");
+        treeNode1.add(treeNode2);
+        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Singles");
+        treeNode1.add(treeNode2);
+        jtr_treElim.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
+        jScrollPane2.setViewportView(jtr_treElim);
+
         javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
         jPanel11.setLayout(jPanel11Layout);
         jPanel11Layout.setHorizontalGroup(
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 840, Short.MAX_VALUE)
+            .addGroup(jPanel11Layout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(584, Short.MAX_VALUE))
         );
         jPanel11Layout.setVerticalGroup(
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 409, Short.MAX_VALUE)
+            .addGroup(jPanel11Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 383, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         jTabbedPane1.addTab("Eliminar Lanzamiento", jPanel11);
@@ -565,6 +625,11 @@ public class Principal extends javax.swing.JFrame {
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton1MouseClicked(evt);
+            }
+        });
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
             }
         });
         jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 360, 180, 80));
@@ -689,27 +754,39 @@ public class Principal extends javax.swing.JFrame {
             for (Usuario User : Users) {
                 if (User instanceof Artista) {
                     if ((((Artista) User).getUserName().equals(nom)) && ((((Artista) User).getPassword()).equals(Contra))) {
-
+                        Autista = ((Artista) User);
                         artista = true;
                         existe = true;
                     }
                 } else {
                     if ((((Cliente) User).getUserName().equals(nom)) && ((((Cliente) User).getPassword()).equals(Contra))) {
-
+                        Usu = ((Cliente) User);
                         artista = false;
                         existe = true;
                     }
                 }
             }
             if (existe) {
+                Jtf_Usuario.setText("");
+                Jtf_Contraseña.setText("");
                 if (artista) {
+                    Artista = nom;
                     JD_Artista.pack();
                     JD_Artista.setModal(true);
                     JD_Artista.setLocationRelativeTo(this);
                     JD_Artista.setVisible(true);
                 } else {
-                    JOptionPane.showMessageDialog(this, "No me dio tiempo");
+                    rellenarCanciones();
+                    DefaultListModel D = new DefaultListModel();
+                    D.addAll(Canciones);
+                    Jlst_canciones.setModel(D);
+                    JD_Cliente.pack();
+                    JD_Cliente.setModal(true);
+                    JD_Cliente.setLocationRelativeTo(this);
+                    JD_Cliente.setVisible(true);
                 }
+            } else {
+                JOptionPane.showMessageDialog(this, "Usuario o contraseña invalidos");
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -729,7 +806,9 @@ public class Principal extends javax.swing.JFrame {
         // TODO add your handling code here:
         String title = jtf_TituloPubli.getText();
         String publi = jtf_FechaPubli.getText();
+
         al = new Album(Integer.parseInt(jsp_cantSongs.getValue().toString()), title, publi, 0);
+        Autista.getAlbumes().add(al);
         BufferedWriter bw = null;
         FileWriter fw = null;
         try {
@@ -737,7 +816,7 @@ public class Principal extends javax.swing.JFrame {
             File fichero = null;
 
             fichero = new File("./Lanzamientos.txt");
-            String Lanza =  al.getTituloPubli() + ";" + al.getLanzaamiento() + "\n";
+            String Lanza = "Album" + ";" + al.getTituloPubli() + ";" + al.getLanzaamiento() + ";" + al.getLikes() + ";" + Artista + "\n";
 
             fw = new FileWriter(fichero, true);
             bw = new BufferedWriter(fw);
@@ -755,7 +834,9 @@ public class Principal extends javax.swing.JFrame {
         } catch (IOException ex) {
         }
         //fin IF
-
+        jtf_TituloPubli.setText("");
+        jtf_FechaPubli.setText("");
+        jsp_cantSongs.setValue(1);
         JD_CrearCanciones.pack();
         JD_CrearCanciones.setModal(true);
         JD_CrearCanciones.setLocationRelativeTo(this);
@@ -770,6 +851,7 @@ public class Principal extends javax.swing.JFrame {
         double temp = (Integer.parseInt(jsp_DuraSong.getValue().toString()) / 60);
         Cancion c = new Cancion(title, al.getTituloPubli(), temp);
         al.setCancion(c);
+        Autista.getCanciones().add(c);
         cont++;
         BufferedWriter bw = null;
         FileWriter fw = null;
@@ -778,7 +860,7 @@ public class Principal extends javax.swing.JFrame {
             File fichero = null;
 
             fichero = new File("./Canciones.txt");
-            String Lanza =  c.getPapa() + ";" + c.getTitulo() + ";" + c.getDuracion() + "\n";
+            String Lanza = c.getPapa() + ";" + c.getTitulo() + ";" + c.getDuracion() + "\n";
 
             fw = new FileWriter(fichero, true);
             bw = new BufferedWriter(fw);
@@ -798,9 +880,9 @@ public class Principal extends javax.swing.JFrame {
         if (cont == al.getCant()) {
             JD_CrearCanciones.setVisible(false);
             cont = 0;
-            jtf_TituloSong.setText("");
-            jsp_DuraSong.setValue(1);
         }
+        jtf_TituloSong.setText("");
+        jsp_DuraSong.setValue(1);
     }//GEN-LAST:event_jButton3MouseClicked
 
     private void jtf_TituloSingleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtf_TituloSingleActionPerformed
@@ -819,6 +901,7 @@ public class Principal extends javax.swing.JFrame {
         // TODO add your handling code here:
         Cancion C = new Cancion(jtf_TituloCancion.getText(), jtf_TituloSingle.getText(), Integer.parseInt(jsp_DuraCancion.getValue().toString()));
         Single s = new Single(C, jtf_TituloCancion.getText(), jtf_FechaSingle.getText(), 0);
+
         BufferedWriter bw = null;
         FileWriter fw = null;
         try {
@@ -826,7 +909,7 @@ public class Principal extends javax.swing.JFrame {
             File fichero = null;
 
             fichero = new File("./Lanzamientos.txt");
-            String Lanza =  s.getTituloPubli() + ";" + s.getLanzaamiento() +"\n";
+            String Lanza = "Single" + ";" + s.getTituloPubli() + ";" + s.getLanzaamiento() + ";" + s.getLikes() + ";" + Artista + "\n";
 
             fw = new FileWriter(fichero, true);
             bw = new BufferedWriter(fw);
@@ -849,12 +932,16 @@ public class Principal extends javax.swing.JFrame {
             File fichero = null;
 
             fichero = new File("./Canciones.txt");
-            String Lanza =  C.getPapa() + ";" + C.getTitulo() + ";" + C.getDuracion() + "\n";
+            String Lanza = C.getPapa() + ";" + C.getTitulo() + ";" + C.getDuracion() + "\n";
 
             fw = new FileWriter(fichero, true);
             bw = new BufferedWriter(fw);
             bw.write(Lanza);
             bw.flush();
+            jtf_TituloCancion.setText("");
+            jtf_TituloSingle.setText("");
+            jsp_DuraCancion.setValue(1);
+            jtf_FechaSingle.setText("");
             JOptionPane.showMessageDialog(JD_Artista,
                     "Single creado");
 
@@ -869,6 +956,54 @@ public class Principal extends javax.swing.JFrame {
 
     }//GEN-LAST:event_Bt_AddSingleMouseClicked
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jTabbedPane1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jTabbedPane1StateChanged
+        // TODO add your handling code here:
+        if (jTabbedPane1.getSelectedIndex() == 4) {
+            DefaultListModel modelo = new DefaultListModel();
+            for (Lanzamiento Lanzamiento1 : Lanzamientos) {
+                modelo.addElement(Lanzamiento1);
+            }
+        }
+    }//GEN-LAST:event_jTabbedPane1StateChanged
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton5MouseClicked
+        // TODO add your handling code here:
+        if (jButton5.isEnabled()) {
+            if (Jlst_canciones.getSelectedIndex() >= 0) {
+                if(H.isAlive()){
+                    H.stop();
+                }
+                jProgressBar1.setValue(0);
+                jProgressBar1.setMaximum(60);
+                Cancion c = Canciones.get(Jlst_canciones.getSelectedIndex());
+                 H = new Hilo(jProgressBar1, true, c.getDuracion());
+                H.start();
+
+            }
+        }
+    }//GEN-LAST:event_jButton5MouseClicked
+
+    private void jButton6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton6MouseClicked
+        // TODO add your handling code here:
+        repro=!repro;
+        
+        if(repro){
+            H.resume();
+        }
+        else{
+        H.suspend();
+    }
+
+    }//GEN-LAST:event_jButton6MouseClicked
+
     public void rellenarArtistas() {
         Artists.clear();
         AdminListaArtist aa = new AdminListaArtist("./Artistas.secs");
@@ -881,7 +1016,6 @@ public class Principal extends javax.swing.JFrame {
         AdminClientes ac = new AdminClientes("./Clientes.secs");
         ac.cargarArchivo();
         Clients.addAll(ac.getClientes());
-        System.out.println(Clients);
 
     }
 
@@ -890,7 +1024,48 @@ public class Principal extends javax.swing.JFrame {
         AdminListaRep ac = new AdminListaRep("./Listas.secs");
         ac.cargarArchivo();
         Listas.addAll(ac.getListas());
-        System.out.println(Listas);
+    }
+
+    public void rellenarLanzamiento() {
+        try {
+            for (Artista Artist : Artists) {
+                Artista Ar = Artist;
+
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void rellenarCanciones() {
+        File fichero = null;
+        FileReader fr = null;
+        BufferedReader br = null;
+
+        try {
+            fichero = new File("./Canciones.txt");
+            fr = new FileReader(fichero);
+            br = new BufferedReader(fr);
+            String linea;
+            while ((linea = br.readLine()) != null) {
+                String lineas[] = linea.split(";");
+                String nom = lineas[1];
+                String duracion = lineas[2];
+                Cancion C = new Cancion(nom, lineas[0], Double.parseDouble(duracion));
+                Canciones.add(C);
+
+            }
+            //fin if
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        try {
+            br.close();
+            fr.close();
+        } catch (IOException ex) {
+        }
     }
 
     /**
@@ -929,10 +1104,18 @@ public class Principal extends javax.swing.JFrame {
     }
     Album al;
     int cont = 0;
+    public static Thread H=new Hilo() ;
+    public static boolean repro=true;
+    public static DefaultMutableTreeNode Nodo;
+    public static Cliente Usu;
+    public static Artista Autista;
+    public static String Artista;
     public static ArrayList<Usuario> Users = new ArrayList<>();
     public static ArrayList<Cliente> Clients = new ArrayList<>();
     public static ArrayList<Artista> Artists = new ArrayList<>();
     public static ArrayList<Lista> Listas = new ArrayList<>();
+    public static ArrayList<Lanzamiento> Lanzamientos = new ArrayList<>();
+    public static ArrayList<Cancion> Canciones = new ArrayList<>();
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -941,11 +1124,14 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JDialog JD_Cliente;
     private javax.swing.JDialog JD_CrearAcount;
     private javax.swing.JDialog JD_CrearCanciones;
+    private javax.swing.JList<String> Jlst_canciones;
     private javax.swing.JTextField Jtf_Contraseña;
     private javax.swing.JTextField Jtf_Usuario;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -976,6 +1162,9 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel9;
+    private javax.swing.JProgressBar jProgressBar1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JButton jbt_CrearAlbum;
     private javax.swing.JButton jbt_CrearCuenta;
@@ -994,5 +1183,6 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JTextField jtf_TituloPubli;
     private javax.swing.JTextField jtf_TituloSingle;
     private javax.swing.JTextField jtf_TituloSong;
+    private javax.swing.JTree jtr_treElim;
     // End of variables declaration//GEN-END:variables
 }

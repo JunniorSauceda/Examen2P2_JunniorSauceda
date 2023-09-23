@@ -5,6 +5,7 @@
 package examen2p2_junniorsauceda;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 /**
  *
@@ -12,6 +13,8 @@ import java.io.Serializable;
  */
 public class Artista extends Usuario implements Serializable{
      private String NomAutista;
+     private ArrayList<Cancion> canciones=new ArrayList<>();
+     private ArrayList<Album> albumes=new ArrayList<>();
 
     public Artista() {
         super();
@@ -30,6 +33,22 @@ public class Artista extends Usuario implements Serializable{
 
     public void setNomAutista(String NomAutista) {
         this.NomAutista = NomAutista;
+    }
+
+    public ArrayList<Cancion> getCanciones() {
+        return canciones;
+    }
+
+    public void setCanciones(ArrayList<Cancion> canciones) {
+        this.canciones = canciones;
+    }
+
+    public ArrayList<Album> getAlbumes() {
+        return albumes;
+    }
+
+    public void setAlbumes(ArrayList<Album> albumes) {
+        this.albumes = albumes;
     }
 
     @Override

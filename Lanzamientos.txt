@@ -1,2 +1,3 @@
-Nuila el mas grande;22/09/2023
-Nuila te Amamos;22/09/2023
+Album;Nuila te amamos;22/09/2023;0;Diego
+Single;Nuila ten compasion;22/09/2023;0;Diego
+Album;Nuila te amo;22/02/2023;0;Diego

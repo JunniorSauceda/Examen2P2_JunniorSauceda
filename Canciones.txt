@@ -1,4 +1,5 @@
-Single Nuila te amo;Nuila el mas grande;60.0
-Nuila te Amamos;Nuila ten piedad;1.0
-Nuila te Amamos;Nuila ten Compasion;2.0
-Nuila te Amamos;Necesito el promedio para la beca;2.0
+Nuila te amamos;Nuila ten piedad;2.0
+Nuila te amamos;Nuila necesito el promedio para la beca :(;3.0
+Nuila ten clemencia;Nuila ten compasion;60.0
+Nuila te amo;Nuila te amo;2.0
+Nuila te amo;nuila por favor :,v;1.0
